@@ -40,6 +40,9 @@ public class UnityChanController : MonoBehaviour {
         bool isGround = (transform.position.y > this.groundLevel) ? false : true;
         this.animator.SetBool("isGround", isGround);
 
+        // ジャンプ状態のときにはボリュームを0にする（追加）
+        GetComponent<AudioSource>().volume = (isGround) ? 1 : 0;
+
         // 着地状態でクリックされた場合（追加）
         if (Input.GetMouseButtonDown(0) && isGround)
         {
@@ -48,7 +51,7 @@ public class UnityChanController : MonoBehaviour {
         }
 
         // クリックをやめたら上方向への速度を減速する（追加）
-        if (Input.GetMouseButtonDown(0) == false)
+        if (Input.GetMouseButton(0) == false)
         {
             if (this.rigid2D.velocity.y > 0)
             {
@@ -61,6 +64,9 @@ public class UnityChanController : MonoBehaviour {
         {
             // UIControllerのGameOver関数を呼び出して画面上に「GameOver」と表示する（追加）
             GameObject.Find("Canvas").GetComponent<UIController>().GameOver();
+
+            // ユニティちゃんを破棄する（追加）
+            Destroy(this.gameObject);
         }
     }
 }
