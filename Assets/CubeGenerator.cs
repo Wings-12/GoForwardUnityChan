@@ -30,6 +30,10 @@ public class CubeGenerator : MonoBehaviour
     // キューブの生成個数の上限
     private int maxBlockNum = 4;
 
+    // 地面の位置(課題１ではここにスクリプトを追加しない)
+    //private float groundLevel = -3.0f;(課題１ではここにスクリプトを追加しない)
+
+
     // Use this for initialization
     void Start ()
     {
@@ -54,7 +58,14 @@ public class CubeGenerator : MonoBehaviour
                 // キューブの生成
                 GameObject go = Instantiate(cubePrefab) as GameObject;
                 go.transform.position = new Vector2(this.genPosX, this.offsetY + i * this.spaceY);
+                // for (int i = 0; i < n; i++){}で最初に生成したキューブが地面に接触する時（課題１）(課題１ではここにスクリプトを追加しない)
+                //if (this.offsetY + i * this.spaceY == groundLevel) (課題１ではここにスクリプトを追加しない)
+                //{
+                //    GameObject.Find("CubePrefab").GetComponent<AudioSource>().(課題１ではここにスクリプトを追加しない)
+                //}
             }
+
+
             // 次のキューブまでの生成時間を決める
             this.span = this.offsetX + this.spaceX * n;
         }

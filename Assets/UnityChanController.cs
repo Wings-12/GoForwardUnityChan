@@ -9,7 +9,7 @@ public class UnityChanController : MonoBehaviour {
 
     //Unityちゃんを移動させるコンポーネントを入れる（追加）
     Rigidbody2D rigid2D;
-   
+
     // 地面の位置
     private float groundLevel = -3.0f;
 
